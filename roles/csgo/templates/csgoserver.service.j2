@@ -1,0 +1,16 @@
+[Unit]
+Description=CSGO Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+User={{ common_user }}
+WorkingDirectory={{ csgo_server_dir }}
+ExecStart={{ csgo_server_dir }}/csgoserver start
+ExecStop={{ csgo_server_dir }}/csgoserver stop
+Restart=no
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

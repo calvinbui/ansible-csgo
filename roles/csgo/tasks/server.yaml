@@ -57,6 +57,7 @@
   template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
+    owner: "{{ common_user }}"
   loop:
     - src: csgoserver.cfg.j2
       dest: "{{ csgo_server_dir }}/lgsm/config-lgsm/csgoserver/csgoserver.cfg"
@@ -66,3 +67,15 @@
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/cfg/gamemode_casual.cfg"
     - src: databases.cfg.j2
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/addons/sourcemod/configs/databases.cfg"
+
+- name: Start csgo server on boot
+  template:
+    src: csgoserver.service.j2
+    dest: /etc/systemd/system/csgoserver.service
+    mode: '0644'
+    owner: root
+    group: root
+
+- name: Force systemd to reread configs
+  systemd:
+    daemon_reload: yes
