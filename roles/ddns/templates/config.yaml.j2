@@ -1,0 +1,11 @@
+api: https://api.cloudflare.com/client/v4/
+auth:
+  scopedToken: {{ ddns_api }}
+domains:
+{% for subdomain in ddns_subdomains %}
+  - name: {{ subdomain }}.{{ ddns_zone }}
+    type: A
+    proxied: true
+    create: true
+    zoneId: {{ ddns_zone_id }}
+{% endfor %}

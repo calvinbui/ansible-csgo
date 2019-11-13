@@ -1,0 +1,19 @@
+---
+
+- hosts: games
+  become: true
+  pre_tasks:
+    - name: Do apt-get update with autoclean
+      apt:
+        update_cache: true
+        autoclean: true
+        cache_valid_time: 3600
+      changed_when: false
+  roles:
+    # - geerlingguy.pip
+    # - geerlingguy.docker
+    # - calvinbui.ansible_docker_network
+    # - linuxgsm
+    # - traefik
+    # - ddns
+    - csgo

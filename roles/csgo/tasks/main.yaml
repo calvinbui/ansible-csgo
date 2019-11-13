@@ -1,0 +1,15 @@
+---
+
+- name: Create working dir
+  file:
+    path: "{{ csgo_dir }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ common_user }}"
+
+- include_tasks: "{{ item }}"
+  loop:
+    # - mysql.yaml
+    # - web_stats.yaml
+    - server.yaml
+    # - plugins.yaml

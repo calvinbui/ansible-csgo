@@ -1,0 +1,68 @@
+---
+
+- name: Create working dir
+  file:
+    path: "{{ csgo_server_dir }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ common_user }}"
+
+- name: Download LinuxGSM
+  get_url:
+    url: https://linuxgsm.sh
+    dest: "{{ csgo_server_dir }}/linuxgsm.sh"
+    mode: '0755'
+    owner: "{{ common_user }}"
+
+- name: Create csgoserver from linuxgsm
+  script: linuxgsm.sh
+  args:
+    executable: /bin/bash
+    chdir: "{{ csgo_server_dir }}"
+    creates: "{{ csgo_server_dir }}/csgoserver"
+
+- name: Install csgoserver from linuxgsm
+  script: csgoserver auto-install
+  args:
+    executable: /bin/bash
+    chdir: "{{ csgo_server_dir }}"
+    creates: "{{ csgo_server_dir }}/lgsm/config-lgsm/csgoserver/csgoserver.cfg"
+
+- name: Generate fastdl
+  script: csgoserver auto-install
+  args:
+    executable: /bin/bash
+    chdir: "{{ csgo_server_dir }}"
+    creates: "{{ csgo_server_dir }}/public_html/fastdl/"
+
+- name: Create CSGO FastDL Server
+  docker_container:
+    name: csgo-fastdl
+    image: chauffer/nginx-autoindex
+    state: started
+    networks:
+      - name: "{{ csgo_docker_network }}"
+    purge_networks: true
+    ports:
+      - 8880:80
+    volumes:
+      - "{{ csgo_server_dir }}/public_html/fastdl/:/usr/share/nginx/html:ro"
+    restart_policy: always
+  register: csgo_fastdl
+
+- pause:
+    prompt: ./csgoserver mod-install
+
+- name: Template CSGO server configs
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - src: csgoserver.cfg.j2
+      dest: "{{ csgo_server_dir }}/lgsm/config-lgsm/csgoserver/csgoserver.cfg"
+    - src: server.cfg.j2
+      dest: "{{ csgo_server_dir }}/serverfiles/csgo/cfg/csgoserver.cfg"
+    - src: gamemode_casual.cfg.j2
+      dest: "{{ csgo_server_dir }}/serverfiles/csgo/cfg/gamemode_casual.cfg"
+    - src: databases.cfg.j2
+      dest: "{{ csgo_server_dir }}/serverfiles/csgo/addons/sourcemod/configs/databases.cfg"

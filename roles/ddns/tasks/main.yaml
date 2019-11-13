@@ -1,0 +1,23 @@
+---
+
+- name: Create working dir
+  file:
+    path: "{{ ddns_folder }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ common_user }}"
+
+- name: Template config
+  template:
+    src: config.yaml.j2
+    dest: "{{ ddns_folder }}/config.yaml"
+    owner: "{{ common_user }}"
+
+- name: Create DDNS container
+  docker_container:
+    name: cloudflare-ddns
+    image: joshava/cloudflare-ddns
+    state: started
+    volumes:
+      - "{{ ddns_folder }}/config.yaml:/app/config.yaml"
+    restart_policy: always

@@ -1,0 +1,12 @@
+---
+
+- name: kento_rankme install
+  copy:
+    src: files/rankme/
+    dest: "{{ csgo_server_dir }}/serverfiles/csgo/addons/sourcemod/"
+    owner: "{{ common_user }}"
+- name: kento_rankme config
+  template:
+    src: kento_rankme.cfg.j2
+    dest: "{{ csgo_server_dir }}/serverfiles/csgo/cfg/sourcemod/kento.rankme.cfg"
+    owner: "{{ common_user }}"

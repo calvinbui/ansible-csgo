@@ -1,0 +1,27 @@
+---
+
+- name: Create working dir
+  file:
+    path: "{{ csgo_mysql_dir }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ common_user }}"
+
+- name: Create CSGO MySQL container
+  docker_container:
+    name: csgo-mysql
+    image: mysql:5
+    state: started
+    networks:
+      - name: "{{ csgo_docker_network }}"
+    purge_networks: true
+    ports:
+      - 3306:3306
+    env:
+      MYSQL_ROOT_PASSWORD: "{{ csgo_mysql_root_password }}"
+      MYSQL_USER: "{{ csgo_mysql_user }}"
+      MYSQL_DATABASE: "{{ csgo_mysql_database }}"
+      MYSQL_PASSWORD: "{{ csgo_mysql_password }}"
+    volumes:
+      - "{{ csgo_mysql_dir }}:/var/lib/mysql"
+    restart_policy: always

@@ -1,0 +1,8 @@
+---
+docker_users:
+  - "{{ common_user }}"
+
+docker_install_compose: true
+
+docker_networks:
+  - name: "{{ csgo_docker_network }}"

@@ -1,0 +1,138 @@
+// ************************************************************************** //
+//                                                                            //
+//     Counter-Strike: Global Offensive - server.cfg                          //
+//     Version 120719                                                         //
+//                                                                            //
+// ************************************************************************** //
+
+// .................................. Basic ................................. //
+
+// Hostname - Name of the server.
+hostname "Autopilot"
+
+// RCON - remote console password.
+rcon_password "{{ csgo_server_rcon_password }}"
+
+// Server password - for private servers.
+sv_password "{{ csgo_server_password }}"
+
+// Email - Server admin email.
+// Example: sv_contact "email@example.com"
+sv_contact ""
+
+// LAN mode - Server is a LAN server; can't connect from the internet. VAC (Valve Anti-Cheat) is disabled in this mode.
+// Default: sv_lan 0
+sv_lan 0
+
+// Cheats mode - Server is disabled to use cheats by default;Commands like noclip,god are disabled to be exploited by the players. VAC (Valve Anti-Cheat) is disabled in this mode when value is set to '1'.
+// Default: sv_cheats 0
+// Cheats ON: sv_cheats 1
+sv_cheats 0
+
+// Tags - Used to provide extra information to clients when they're browsing for servers. Separate tags with a comma.
+// Example: sv_tags "128-tick,deathmatch,dm,ffa,pistol,dust2"
+sv_tags ""
+
+// Region - The region of the world to report this server in.
+// Default: -1
+// 0 - US East, 1 - US West, 2 - South America, 3 - Europe, 4 - Asia, 5 - Australia, 6 - Middle East, 7 - Australia
+sv_region 5
+
+sv_tags "autopilot"
+
+// ............................. Server Logging ............................. //
+
+// Enable log - Enables logging to file, console, and udp < on | off >.
+// Recommended: log on
+log on
+
+// Log bans - Log server bans in the server logs.
+// Default: sv_logbans 1
+// Recommended: sv_logbans 1
+sv_logbans 1
+
+// Log echo - Display log information to the server console.
+// Default: sv_logecho 1
+// Recommended: sv_logecho 1
+sv_logecho 1
+
+// Log file - Log server information in the log file.
+// Default: sv_logfile 1
+// Recommended: sv_logfile 1
+sv_logfile 1
+
+// One file log - Log server information to only one file.
+// Default: sv_log_onefile 0
+// Recommended: sv_log_onefile 0
+sv_log_onefile 0
+
+// Server Hibernation
+sv_hibernate_when_empty 1
+sv_hibernate_ms 5
+
+// ............................. Server Query ............................. //
+// More info at: https://www.gametracker.com/games/csgo/forum.php?thread=91691
+host_name_store 1
+host_info_show 1
+host_players_show 2
+
+// ................................ Ban List ................................ //
+
+// User ban - Server banlist based on user steam ID.
+// Recommended: exec banned_user.cfg
+exec banned_user.cfg
+
+// IP ban - Server banlist based on user IP.
+// Recommended: exec banned_ip.cfg
+exec banned_ip.cfg
+
+// Write ID - Writes a list of permanently-banned user IDs to banned_user.cfg.
+writeid
+
+// Write IP - Save the ban list to banned_ip.cfg.
+writeip
+
+
+// ................................ Fast DL ................................ //
+sv_downloadurl "https://{{ csgo_fastdl.ansible_facts.docker_container.Name[1:] }}.{{ ddns_zone }}"
+sv_allowdownload "1"
+sv_allowupload "1"
+
+
+// ................................ GO TV ................................ //
+tv_enable "1"
+tv_port "27020"
+tv_title "Autopilot GOTV"
+tv_password ""
+tv_delay "10"
+tv_name "Autopilot GOTV"
+tv_deltacache "2"
+tv_snapshotrate "24"
+tv_allow_static_shots "1"
+tv_delaymapchange "0"
+tv_maxclients "10"
+tv_advertise_watchable "1"
+spec_replay_enable "1"
+spec_replay_bot "1"
+
+// ................................ Game ................................ //
+mp_warmuptime "120"
+mp_startmoney "10000"
+mp_freezetime "8"
+mp_friendlyfire "1"
+mp_buytime "30"
+mp_c4timer "45"
+mp_maxrounds "100"
+mp_winlimit "100"
+mp_roundtime "30"
+mp_solid_teammates "1"
+
+// ................................ Bots ................................ //
+bot_quota "0"
+bot_quota_mode "normal"
+bot_difficulty "1"
+
+// ................................ Chat ................................ //
+sv_full_alltalk "1"
+sv_alltalk "1"
+sv_deadtalk "1"

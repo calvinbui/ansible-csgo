@@ -1,0 +1,6 @@
+[games]
+192.168.1.12
+
+[games:vars]
+ansible_ssh_user=autopilot
+ansible_python_interpreter=/usr/bin/python3

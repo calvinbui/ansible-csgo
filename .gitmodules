@@ -1,0 +1,3 @@
+[submodule "roles/csgo/files/rankme"]
+	path = roles/csgo/files/rankme
+	url = https://github.com/rogeraabbccdd/Kento-Rankme

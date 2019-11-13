@@ -1,0 +1,5 @@
+---
+
+- src: geerlingguy.pip
+- src: geerlingguy.docker
+- src: calvinbui.ansible_docker_network

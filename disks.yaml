@@ -1,0 +1,17 @@
+---
+# this is to configure the hard drives.
+- hosts: games
+  become: true
+  tasks:
+    - name: Create new mount point
+      file:
+        path: "{{ common_folder }}"
+        state: directory
+        mode: '0777'
+    - name: Mount disk to mount point
+      mount:
+        path: "{{ common_folder }}"
+        src: /dev/sda1
+        fstype: ext4
+        boot: true
+        state: present
