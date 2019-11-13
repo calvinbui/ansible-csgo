@@ -11,10 +11,10 @@
     ports:
       - 8888:8080
     env:
-      MYSQL_USER: "{{ csgo_mysql_user }}"
+      MYSQL_USER: "root"
       MYSQL_DB: "{{ csgo_mysql_database }}"
       MYSQL_TABLE: "{{ csgo_mysql_database }}"
       MYSQL_HOST: "csgo-mysql.{{ csgo_docker_network }}"
-      MYSQL_PASSWORD: "{{ csgo_mysql_password }}"
+      MYSQL_PASSWORD: "{{ csgo_mysql_root_password }}"
     restart_policy: always
-    register: csgo_stats
+  register: csgo_stats

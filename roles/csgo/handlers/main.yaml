@@ -1,0 +1,7 @@
+---
+
+- name: Update fastdl
+  script: csgoserver fastdl
+  args:
+    executable: /bin/bash
+    chdir: "{{ csgo_server_dir }}"

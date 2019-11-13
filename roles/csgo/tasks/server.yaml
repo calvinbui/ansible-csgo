@@ -50,8 +50,15 @@
     restart_policy: always
   register: csgo_fastdl
 
-- pause:
-    prompt: ./csgoserver mod-install
+- name: Install metamod by running ./csgoserver mod-install
+  wait_for:
+    path: "{{ csgo_server_dir }}/lgsm/mods/metamod-files.txt"
+    state: present
+
+- name: Install sourcemod by running ./csgoserver mod-install
+  wait_for:
+    path: "{{ csgo_server_dir }}/lgsm/mods/sourcemod-files.txt"
+    state: present
 
 - name: Template CSGO server configs
   template:
@@ -67,6 +74,8 @@
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/cfg/gamemode_casual.cfg"
     - src: databases.cfg.j2
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/addons/sourcemod/configs/databases.cfg"
+    - src: core.cfg.j2
+      dest: "{{ csgo_server_dir }}/serverfiles/csgo/addons/sourcemod/configs/core.cfg"
 
 - name: Start csgo server on boot
   template:

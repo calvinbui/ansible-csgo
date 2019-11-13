@@ -17,3 +17,12 @@
     # - traefik
     # - ddns
     - csgo
+
+  post_tasks:
+    - name: Start docker after drive is mounted
+      lineinfile:
+        path: /lib/systemd/system/docker.socket
+        state: present
+        insertafter: '^\[Unit\]$'
+        line: "After=mnt-games.mount"
+

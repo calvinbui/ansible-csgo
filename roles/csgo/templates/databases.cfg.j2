@@ -34,11 +34,21 @@
 
   "rankme"
   {
-      "driver"   "mysql"
-      "host"     "{{ inventory_hostname }}"
-      "database" "{{ csgo_mysql_database }}"
-      "user"     "{{ csgo_mysql_user }}"
-      "pass"     "{{ csgo_mysql_password }}"
-      "port"     "3306"
+    "driver"   "mysql"
+    "host"     "{{ inventory_hostname }}"
+    "database" "{{ csgo_mysql_database }}"
+    "user"     "root"
+    "pass"     "{{ csgo_mysql_root_password }}"
+    "port"     "3306"
+  }
+
+  "weapons"
+  {
+    "driver"   "mysql"
+    "host"     "{{ inventory_hostname }}"
+    "database" "{{ csgo_mysql_database }}"
+    "user"     "root"
+    "pass"     "{{ csgo_mysql_root_password }}"
+    "port"     "3306"
   }
 }

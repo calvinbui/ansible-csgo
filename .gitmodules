@@ -1,3 +1,6 @@
 [submodule "roles/csgo/files/rankme"]
 	path = roles/csgo/files/rankme
 	url = https://github.com/rogeraabbccdd/Kento-Rankme
+[submodule "roles/csgo/files/Fortnite-Emotes-Extended"]
+	path = roles/csgo/files/Fortnite-Emotes-Extended
+	url = https://github.com/Franc1sco/Fortnite-Emotes-Extended
