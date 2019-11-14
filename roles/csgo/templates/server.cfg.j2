@@ -94,7 +94,7 @@ writeip
 
 
 // ................................ Fast DL ................................ //
-sv_downloadurl "https://{{ csgo_fastdl.ansible_facts.docker_container.Name[1:] }}.{{ ddns_zone }}"
+sv_downloadurl "https://{{ csgo_fastdl.ansible_facts.docker_container.Name[1:] }}.{{ ddns_zone }}/fastdl"
 sv_allowdownload "1"
 sv_allowupload "1"
 

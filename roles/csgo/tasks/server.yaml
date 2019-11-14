@@ -29,7 +29,7 @@
     creates: "{{ csgo_server_dir }}/lgsm/config-lgsm/csgoserver/csgoserver.cfg"
 
 - name: Generate fastdl
-  script: csgoserver auto-install
+  script: csgoserver fast-dl
   args:
     executable: /bin/bash
     chdir: "{{ csgo_server_dir }}"
@@ -46,7 +46,7 @@
     ports:
       - 8880:80
     volumes:
-      - "{{ csgo_server_dir }}/public_html/fastdl/:/usr/share/nginx/html:ro"
+      - "{{ csgo_server_dir }}/public_html/:/usr/share/nginx/html:ro"
     restart_policy: always
   register: csgo_fastdl
 
