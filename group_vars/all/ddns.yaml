@@ -4,8 +4,12 @@ ddns_folder: "{{ common_folder }}/ddns"
 ddns_zone: autopilothq.dev
 ddns_zone_id: 95077552c552e1e3f1e518b3f0a285e5
 ddns_subdomains:
-  - "{{ csgo_fastdl.ansible_facts.docker_container.Name[1:] }}"
-  - "{{ csgo_stats.ansible_facts.docker_container.Name[1:] }}"
+  - name: "{{ csgo_fastdl.ansible_facts.docker_container.Name[1:] }}"
+    proxied: true
+  - name: "{{ csgo_stats.ansible_facts.docker_container.Name[1:] }}"
+    proxied: true
+  - name: gametracker
+    proxied: false
 ddns_api: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           66376337316432633433616439366234356330393636613230353835346636616436306163653138

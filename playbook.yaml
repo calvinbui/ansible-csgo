@@ -10,13 +10,13 @@
         cache_valid_time: 3600
       changed_when: false
   roles:
-    # - geerlingguy.pip
-    # - geerlingguy.docker
-    # - calvinbui.ansible_docker_network
-    # - linuxgsm
-    # - traefik
-    # - ddns
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - calvinbui.ansible_docker_network
+    - linuxgsm
     - csgo
+    - ddns
+    - traefik
 
   post_tasks:
     - name: Start docker after drive is mounted

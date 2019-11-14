@@ -3,9 +3,9 @@ auth:
   scopedToken: {{ ddns_api }}
 domains:
 {% for subdomain in ddns_subdomains %}
-  - name: {{ subdomain }}.{{ ddns_zone }}
+  - name: {{ subdomain.name }}.{{ ddns_zone }}
     type: A
-    proxied: true
+    proxied: {{ subdomain.proxied }}
     create: true
     zoneId: {{ ddns_zone_id }}
 {% endfor %}
