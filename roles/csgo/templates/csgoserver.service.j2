@@ -9,7 +9,7 @@ User={{ common_user }}
 WorkingDirectory={{ csgo_server_dir }}
 ExecStart={{ csgo_server_dir }}/csgoserver start
 ExecStop={{ csgo_server_dir }}/csgoserver stop
-Restart=no
+Restart=yes
 RemainAfterExit=yes
 
 [Install]
