@@ -72,6 +72,8 @@
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/cfg/csgoserver.cfg"
     - src: gamemode_casual.cfg.j2
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/cfg/gamemode_casual.cfg"
+    - src: gamemode_competitive.cfg.j2
+      dest: "{{ csgo_server_dir }}/serverfiles/csgo/cfg/gamemode_competitive.cfg"
     - src: databases.cfg.j2
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/addons/sourcemod/configs/databases.cfg"
     - src: core.cfg.j2
