@@ -22,6 +22,8 @@ csgo_mysql_password: !vault |
 csgo_mysql_database: rankme
 
 csgo_server_dir: "{{ csgo_dir }}/server"
+csgo_server_workshop_collection: "1916003213"
+csgo_server_workshop_map: "122521875"
 csgo_server_workshop_api: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           32303533306566396365383066656638666138353636356562666261316431383034646631613363
