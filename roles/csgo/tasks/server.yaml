@@ -93,3 +93,11 @@
     enabled: yes
     masked: no
     daemon_reload: yes
+
+- name: Set cronjob for daily update before gametime
+  cron:
+    name: "CSGOServer Update"
+    job: "su - {{ common_user }} -c '{{ csgo_server_dir }}/csgoserver update' > /dev/null 2>&1"
+    minute: "0"
+    hour: "12,17"
+    state: present
