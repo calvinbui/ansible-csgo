@@ -77,21 +77,7 @@ host_info_show 1
 host_players_show 2
 
 // ................................ Ban List ................................ //
-
-// User ban - Server banlist based on user steam ID.
-// Recommended: exec banned_user.cfg
-exec banned_user.cfg
-
-// IP ban - Server banlist based on user IP.
-// Recommended: exec banned_ip.cfg
-exec banned_ip.cfg
-
-// Write ID - Writes a list of permanently-banned user IDs to banned_user.cfg.
-writeid
-
-// Write IP - Save the ban list to banned_ip.cfg.
-writeip
-
+sv_vote_kick_ban_duration 0
 
 // ................................ Fast DL ................................ //
 sv_downloadurl "https://{{ csgo_fastdl.ansible_facts.docker_container.Name[1:] }}.{{ ddns_zone }}/fastdl"
