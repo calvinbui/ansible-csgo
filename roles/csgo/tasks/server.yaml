@@ -78,6 +78,7 @@
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/addons/sourcemod/configs/databases.cfg"
     - src: core.cfg.j2
       dest: "{{ csgo_server_dir }}/serverfiles/csgo/addons/sourcemod/configs/core.cfg"
+  notify: Restart CSGO Server
 
 - name: Template service file
   template:

@@ -5,3 +5,9 @@
   args:
     executable: /bin/bash
     chdir: "{{ csgo_server_dir }}"
+
+- name: Restart CSGO Server
+  script: csgoserver restart
+  args:
+    executable: /bin/bash
+    chdir: "{{ csgo_server_dir }}"
