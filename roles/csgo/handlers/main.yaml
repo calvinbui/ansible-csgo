@@ -1,13 +1,12 @@
 ---
 
 - name: Update fastdl
-  shell: csgoserver fastdl
+  shell: "./csgoserver fastdl"
   args:
     executable: /bin/bash
     chdir: "{{ csgo_server_dir }}"
 
 - name: Restart CSGO Server
-  shell: csgoserver restart
-  args:
-    executable: /bin/bash
-    chdir: "{{ csgo_server_dir }}"
+  service:
+    name: csgoserver
+    state: restarted
