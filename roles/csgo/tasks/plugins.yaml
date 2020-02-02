@@ -1,25 +1,20 @@
 ---
-
 - name: Plugins install
   copy:
     src: "files/{{ item.src }}/"
     dest: "{{ csgo_server_dir }}/serverfiles/csgo{{ item.dest }}"
     owner: "{{ common_user }}"
   loop:
-    # - src: rankme
-    #   dest: /addons/sourcemod/
-    # - src: rankme-scramble
-    #   dest: /addons/sourcemod/
-    # - src: Fortnite-Emotes-Extended
-    #   dest: /
+    - src: Fortnite-Emotes-Extended
+      dest: /
     - src: Quake_Sounds_v3
       dest: /
     - src: PTah
       dest: /
     # - src: weapons
     #   dest: /
-  # notify: Update fastdl
 
+  # notify: Update fastdl
 - name: Plugin configs
   template:
     src: "{{ item.src }}"
