@@ -1,0 +1,15 @@
+---
+- name: Create Slack CSGO container
+  docker_container:
+    name: slack-csgo
+    image: calvinbui/slack-csgo:latest
+    state: started
+    pull: true
+    ports:
+      - 3000:3000
+    env:
+      RCON_HOST: "{{ ansible_default_ipv4.address }}:27015"
+      RCON_PASS: "{{ csgo_server_rcon_password }}"
+      SLACK_SIGNING_SECRET: "{{ csgo_slack_signing_token }}"
+      SLACK_CHANNEL: "counterstrike"
+    restart_policy: always

@@ -11,17 +11,21 @@
       dest: /
     - src: PTah
       dest: /
-    # - src: weapons
-    #   dest: /
+    - src: weapons
+      dest: /
+    - src: gloves
+      dest: /
+    - src: fortnite_hits
+      dest: /
+  notify: Update fastdl
 
-  # notify: Update fastdl
 - name: Plugin configs
   template:
     src: "{{ item.src }}"
     dest: "{{ csgo_server_dir }}/serverfiles/csgo{{ item.dest }}"
     owner: "{{ common_user }}"
   loop:
-    - src: kento_rankme.cfg.j2
-      dest: /cfg/sourcemod/kento.rankme.cfg
     - src: weapons.cfg.j2
       dest: /cfg/sourcemod/weapons.cfg
+    - src: gloves.cfg.j2
+      dest: /cfg/sourcemod/gloves.cfg

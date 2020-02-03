@@ -51,4 +51,14 @@
     "pass"     "{{ csgo_mysql_root_password }}"
     "port"     "3306"
   }
+
+  "gloves"
+  {
+    "driver"   "mysql"
+    "host"     "{{ inventory_hostname }}"
+    "database" "{{ csgo_mysql_database }}"
+    "user"     "root"
+    "pass"     "{{ csgo_mysql_root_password }}"
+    "port"     "3306"
+  }
 }

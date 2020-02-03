@@ -1,3 +1,6 @@
 [submodule "roles/csgo/files/Fortnite-Emotes-Extended"]
 	path = roles/csgo/files/Fortnite-Emotes-Extended
 	url = https://github.com/Franc1sco/Fortnite-Emotes-Extended
+[submodule "roles/csgo/files/weapons"]
+	path = roles/csgo/files/weapons
+	url = https://github.com/kgns/weapons

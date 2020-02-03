@@ -1,18 +1,19 @@
 ---
-
 - name: Create Traefik Container
   docker_container:
     name: traefik
     image: traefik:v2.0
     state: started
     command: --api.insecure=true --providers.docker --providers.docker.exposedByDefault=true --providers.docker.defaultRule="Host(`{% raw %}{{ .Name }}{% endraw %}.{{ ddns_zone }}`)" --providers.docker.useBindPortIP=true --accesslog=true
-    networks: "{{ docker_networks }}"
+    networks:
+      - name: bridge
+      - name: csgo
     purge_networks: true
+    networks_cli_compatible: true
     ports:
       - 8080:8080
       - 443:443
       - 80:80
-    env:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart_policy: always
