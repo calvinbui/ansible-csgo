@@ -8,8 +8,8 @@
 
 - include_tasks: "{{ item }}"
   loop:
-    # - mysql.yaml
-    # - web_stats.yaml
-    # - server.yaml
-    # - plugins.yaml
+    - mysql.yaml
+    - web_stats.yaml
+    - server.yaml
+    - plugins.yaml
     - slack.yaml
