@@ -4,3 +4,6 @@
 [submodule "roles/csgo/files/weapons"]
 	path = roles/csgo/files/weapons
 	url = https://github.com/kgns/weapons
+[submodule "roles/csgo/files/AgentsChooser"]
+	path = roles/csgo/files/AgentsChooser
+	url = https://github.com/Franc1sco/Franug-AgentsChooser

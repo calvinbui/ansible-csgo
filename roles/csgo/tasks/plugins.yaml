@@ -1,22 +1,26 @@
 ---
 - name: Plugins install
   copy:
-    src: "files/{{ item.src }}/"
+    src: "files/{{ item.src }}"
     dest: "{{ csgo_server_dir }}/serverfiles/csgo{{ item.dest }}"
     owner: "{{ common_user }}"
   loop:
-    - src: Fortnite-Emotes-Extended
+    - src: Fortnite-Emotes-Extended/
       dest: /
-    - src: Quake_Sounds_v3
+    - src: Quake_Sounds_v3/
       dest: /
-    - src: PTah
+    - src: PTah/
       dest: /
-    - src: weapons
+    - src: weapons/
       dest: /
-    - src: gloves
+    - src: gloves/
       dest: /
-    - src: fortnite_hits
+    - src: fortnite_hits/
       dest: /
+    - src: AgentsChooser/csgo_agentschooser.smx
+      dest: /addons/sourcemod/plugins/
+    - src: AgentsChooser/csgo_agentschooser.sp
+      dest: /addons/sourcemod/scripting/
   notify: Update fastdl
 
 - name: Plugin configs
