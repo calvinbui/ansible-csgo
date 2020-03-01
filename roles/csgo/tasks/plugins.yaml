@@ -7,6 +7,8 @@
   loop:
     - src: Fortnite-Emotes-Extended/
       dest: /
+    - src: sm_skinchooser/
+      dest: /
     - src: Quake_Sounds_v3/
       dest: /
     - src: PTah/
@@ -33,3 +35,5 @@
       dest: /cfg/sourcemod/weapons.cfg
     - src: gloves.cfg.j2
       dest: /cfg/sourcemod/gloves.cfg
+    - src: sm_skinchooser.cfg.j2
+      dest: /cfg/sourcemod/sm_skinchooser.cfg
